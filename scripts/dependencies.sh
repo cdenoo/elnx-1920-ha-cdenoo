@@ -30,9 +30,8 @@ set -o pipefail # don’t hide errors within pipes
 #{{{ Variables
 readonly SCRIPT_NAME=$(basename "${0}")
 
-readonly ansible_root=ansible
-readonly playbook=${ansible_root}/site.yml
-readonly roles_path=${ansible_root}/roles
+playbook=ansible/site.yml
+roles_path=ansible/roles
 #}}}
 
 main() {
@@ -62,19 +61,14 @@ main() {
 # If the default roles path does not exist, try "roles/"
 set_roles_path() {
   if [ ! -d "${roles_path}" ]; then
-    if [ -d "${ansible_root}" ]; then
-      mkdir "${roles_path}"
-    else
-      roles_path="roles"
-    fi
+    roles_path="roles"
   fi
 }
 
 # Find dependencies in the specified playbook
 find_dependencies() {
   grep '    - .*\..*' "${playbook}" \
-    | cut -c7- \
-    | grep --invert-match " " \
+    | cut --characters=7- \
     | sort --unique
 }
 
@@ -85,7 +79,7 @@ process_args() {
     usage
     exit 2
   elif [ "${#}" -eq "1" ]; then
-    if [ "${1}" = '-h' ] || [ "${1}" = '--help' ]; then
+    if [ "${1}" = '-h' -o "${1}" = '--help' ]; then
       usage
       exit 0
     elif [ ! -f "${1}" ]; then
@@ -95,7 +89,7 @@ process_args() {
     else
       playbook="${1}"
     fi
-  elif [ "${#}" -eq "0" ] && [ ! -f "${playbook}" ]; then
+  elif [ "${#}" -eq "0" -a ! -f "${playbook}" ]; then
     cat << _EOF_
 Default playbook ${playbook} not found. Maybe you should cd to the
 directory above ${playbook%%/*}/, or specify the playbook.

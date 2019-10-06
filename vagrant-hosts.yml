@@ -27,7 +27,13 @@
 ---
 - name: srv001
   ip: 192.168.56.10
+  synced_folders:
+    - src: www
+      dest: /var/www/html
+      options:
+        :owner: root
+        :group: root
+        :mount_options: ['dmode=0755', 'fmode=0644']
 
 - name: srv002
   ip: 192.168.56.11
-
