@@ -66,7 +66,14 @@ Make sure to write clean Markdown code, so your report looks good and is clearly
 
 The test report is a transcript of the execution of the test plan, with the actual results. Significant problems you encountered should also be mentioned here, as well as any solutions you found. The test report should clearly prove that you have met the requirements.
 
+## Troubleshooting
+
+- Bij creeren nieuwe Host-Only Adapter geeft vagrant een error.
+  - Oplossing: Control panel netwerk adapter af en aan zetten
+
 ## Resources
+
+- https://github.com/bertvv
 
 - [lynis](https://cisofy.com/lynis/)
 - [open-scap](https://www.open-scap.org/)
