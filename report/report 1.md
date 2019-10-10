@@ -86,7 +86,7 @@ Opzetten lamp-stack met wordpress geinstalleerd.
 
 - Bij creeren nieuwe Host-Only Adapter geeft vagrant een error.
   - Oplossing: Control panel netwerk adapter af en aan zetten
-- Creeren van paswoord met hash
+- Creeren van paswoord hash met salt
   - Oplossing: `openssl passwd -6 -salt xyz yourpass`
 
 ## Resources
