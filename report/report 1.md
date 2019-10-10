@@ -46,10 +46,15 @@ How are you going to verify that the requirements are met? The test plan is a de
 - run commando `systemctl status mariadb`
 - als service httpd op "Active: active (running)" staat is de eerste test geslaagd
 
-2. Wordpress
+2. PHPMyAdmin
+- open browser en surf naar `http://192.168.56.10/phpmyadmin`
+- log in met user `root` en paswoord `root_password` zoals geconfigureerd in `/ansible/host_vars/srv001.yml`
+- als het phpMyAdmin dashboard tevoorschijn komt is de test geslaagd
+
+3. Wordpress
 - open browser en surf naar `http://192.168.56.10/wordpress`
 - log in als `wordpress_user` met `wordpress_password` zoals geconfigureerd in `/ansible/host_vars/srv001.yml`
-- als het wordpress-dashboard tevoorschijn komt is de test geslaagd
+- als de wordpress configuratie tevoorschijn komt is de test geslaagd
 
 ## Documentation
 
