@@ -8,9 +8,25 @@ Use this file to write down the most important commands you encounter, so you ca
 - To enter text, first go to *insert mode*.
 
 | Taak                       | Commando |
-| :---                       | :---     |
+| :------------------------- | :------- |
 | Normal mode -> insert mode | `i`      |
 | Insert mode -> normal mode | `<Esc>`  |
 | Opslaan                    | `:w`     |
 | Opslaan en afsluiten       | `:wq`    |
 | Afsluiten zonder opslaan   | `:q!`    |
+
+## Vagrant
+| Taak                   | Commando           |
+| :--------------------- | :----------------- |
+| vagrantbox opstarten   | vagrant up         |
+| vagrantbox verwijderen | vagrant destroy -f |
+| vagrantbox provisionen | vagrant provision  |
+
+## Git
+| Taak                                 | Commando                    |
+| :----------------------------------- | :-------------------------- |
+| alle changes toevoegen               | git add .                   |
+| toegevoegde changes committen        | git commit -m "`<message>`" |
+| commits van local naar remote pushen | git push                    |
+| changes van remote naar local halen  | git pull                    |
+| repository naar local kopieren       | git clone `<repo-link>`     |
