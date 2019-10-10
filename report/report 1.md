@@ -14,8 +14,6 @@ Opzetten lamp-stack met wordpress geinstalleerd.
 
 ## Test plan
 
-How are you going to verify that the requirements are met? The test plan is a detailed checklist of actions to take, including the expected result for each action, in order to prove your system meets the requirements. Part of this is running the automated tests, but it is not always possible to validate *all* requirements throught these tests.
-
 ### Beschikbaarheid
 - open terminal op host
 - run commando `ping 192.168.56.10`
@@ -27,8 +25,8 @@ How are you going to verify that the requirements are met? The test plan is a de
 - run commando `systemctl status httpd`
 - als service httpd op "Active: active (running)" staat is de eerste test geslaagd
 2. Webpaginas
-- open browser en surf naar `http://192.168.56.10/`
-- open browser en surf naar `http://192.168.56.10/wordpress`
+- open browser en surf naar http://192.168.56.10/
+- open browser en surf naar http://192.168.56.10/wordpress
 - als beide webpaginas beschikbaar zijn, is de test geslaagd
 
 ### PHP
@@ -37,7 +35,7 @@ How are you going to verify that the requirements are met? The test plan is a de
 - run commando `php -v`
 - als de output een versie van php weergeeft is de test geslaagd
 2. Webpagina
-- open browser en surf naar `http://192.168.56.10/`
+- open browser en surf naar http://192.168.56.10/
 - als de webpagina een overzicht geeft van de installatie van PHP is de test geslaagd
 
 ### Mariadb
@@ -47,19 +45,15 @@ How are you going to verify that the requirements are met? The test plan is a de
 - als service httpd op "Active: active (running)" staat is de eerste test geslaagd
 
 2. PHPMyAdmin
-- open browser en surf naar `http://192.168.56.10/phpmyadmin`
+- open browser en surf naar http://192.168.56.10/phpmyadmin
 - log in met user `root` en paswoord `root_password` zoals geconfigureerd in `/ansible/host_vars/srv001.yml`
 - als het phpMyAdmin dashboard tevoorschijn komt is de test geslaagd
 
 3. Wordpress
-- open browser en surf naar `http://192.168.56.10/wordpress`
+- open browser en surf naar http://192.168.56.10/wordpress
 - als de wordpress configuratie tevoorschijn komt is de test geslaagd
 
 ## Documentation
-
-Describe *in detail* how you completed the assignment, with main focus on the "manual" work. It is of course not necessary to copy/paste your code in this document, but you can refer to it with a hyperlink.
-
-Make sure to write clean Markdown code, so your report looks good and is clearly structured on Github.
 
 1. Clone base repository van ELNX-HA 
    - 6bedb6c90e83cd49c13f9b92b9a2b878b20cf48a
@@ -69,8 +63,6 @@ Make sure to write clean Markdown code, so your report looks good and is clearly
    - 21bfb8ba4f19cc6ab82fc4d3c5e838622a9d7490
 
 ## Test report
-
-The test report is a transcript of the execution of the test plan, with the actual results. Significant problems you encountered should also be mentioned here, as well as any solutions you found. The test report should clearly prove that you have met the requirements.
 
 ### Beschikbaarheid
 ![beschikbaarheid](img/R1/beschikbaarheid.png)
