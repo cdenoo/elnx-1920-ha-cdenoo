@@ -86,10 +86,13 @@ Opzetten lamp-stack met wordpress geinstalleerd.
 
 - Bij creeren nieuwe Host-Only Adapter geeft vagrant een error.
   - Oplossing: Control panel netwerk adapter af en aan zetten
+- Creeren van paswoord met hash
+  - Oplossing: `openssl passwd -6 -salt xyz yourpass`
 
 ## Resources
 
 - https://github.com/bertvv
+- https://unix.stackexchange.com/questions/81240/manually-generate-password-for-etc-shadow
 
 - [lynis](https://cisofy.com/lynis/)
 - [open-scap](https://www.open-scap.org/)
