@@ -1,7 +1,7 @@
 # Enterprise Linux Lab Report
 
-- Student name: 
-- Github repo: <https://github.com/HoGentTIN/elnx-USER.git>
+- Student name: Cedric Denoo
+- Github repo: <https://github.com/HoGentTIN/elnx-1920-ha-cdenoo.git>
 
 Describe the goals of the current iteration in a short sentence.
 
