@@ -53,7 +53,6 @@ How are you going to verify that the requirements are met? The test plan is a de
 
 3. Wordpress
 - open browser en surf naar `http://192.168.56.10/wordpress`
-- log in als `wordpress_user` met `wordpress_password` zoals geconfigureerd in `/ansible/host_vars/srv001.yml`
 - als de wordpress configuratie tevoorschijn komt is de test geslaagd
 
 ## Documentation
@@ -62,9 +61,34 @@ Describe *in detail* how you completed the assignment, with main focus on the "m
 
 Make sure to write clean Markdown code, so your report looks good and is clearly structured on Github.
 
+1. Clone base repository van ELNX-HA 
+   - 6bedb6c90e83cd49c13f9b92b9a2b878b20cf48a
+2. Lamp stack toevoegen van https://github.com/bertvv/lampstack
+   - e6e977464d55295703df02db11a4fd2c75a972bc
+3. Python script schrijven om vereiste ansible rollen te importeren
+   - 21bfb8ba4f19cc6ab82fc4d3c5e838622a9d7490
+
 ## Test report
 
 The test report is a transcript of the execution of the test plan, with the actual results. Significant problems you encountered should also be mentioned here, as well as any solutions you found. The test report should clearly prove that you have met the requirements.
+
+### Beschikbaarheid
+![beschikbaarheid](img/R1/beschikbaarheid.png)
+
+### Apache
+![httpd_1](img/R1/httpd_1.png)
+![httpd_2](img/R1/httpd_2.png)
+![httpd_3](img/R1/httpd_3.png)
+
+### PHP
+![beschikbaarheid](img/R1/beschikbaarheid.png)
+![php_1](img/R1/php_1.png)
+
+### Mariadb
+![mariadb_1](img/R1/mariadb_1.png)
+![mariadb_2](img/R1/mariadb_2.png)
+![mariadb_3](img/R1/mariadb_3.png)
+![httpd_3](img/R1/httpd_3.png)
 
 ## Troubleshooting
 
