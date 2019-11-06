@@ -1,11 +1,11 @@
 # Assignment Enterprise Linux: High Availability
 
-- Student: NAME
-- Repository: <https://github.com/HoGentTIN/elnx-ha-USER.git>
+- Student: Cedric Denoo
+- Repository: <https://github.com/HoGentTIN/elnx-1920-ha-cdenoo.git>
 
 The goal of this assignment is to set up a proof-of-concept for the infrastructure of a large website in a virtualized environment using the [Ansible](https://ansible.com/) Ansible configuration management system. When you're finished, you should be able to recreate the entire infrastructure *from scratch* using a minimum of manual interventions, ideally a single command (`vagrant up`).
 
-This repository contains the [assignments](doc/), and some scaffolding code to get you started.
+This repository contains the [assignments](assignment/), and some scaffolding code to get you started.
 
 The scaffolding code is based on [ansible-skeleton](https://github.com/bertvv/ansible-skeleton), a framework for quickly setting up an Ansible development and testing environment powered by [Vagrant](https://vagrantup.com).
 
