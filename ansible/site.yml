@@ -9,3 +9,6 @@
     - bertvv.mariadb
     - bertvv.wordpress
     - phpmyadmin
+    - cloudalchemy.prometheus
+    - cloudalchemy.grafana
+    - cloudalchemy.node-exporter

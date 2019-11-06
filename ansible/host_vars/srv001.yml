@@ -15,17 +15,72 @@ rhbase_install_packages:
 rhbase_firewall_allow_services:
   - http
   - https
+  - mysql
 
-mariadb_databases:
-  - name: wordpress
+rhbase_firewall_allow_ports:
+  - 9116/tcp
+  - 9100/tcp
+  - 9090/tcp
+  - 3000/tcp
 
-mariadb_users:
-  - name: wordpressusr
-    password: BulpashCod
-    priv: 'wordpress.*:ALL'
+# MariaDB
+mariadb_bind_address: "0.0.0.0"
 
 mariadb_root_password: Teilvadci
 
 wordpress_database: wordpress
 wordpress_user: wordpressusr
 wordpress_password: BulpashCod
+
+grafana_database_name: grafana
+grafana_database_user: grafanauser
+grafana_database_password: grafanapassword123
+
+mariadb_databases:
+  - name: "{{ wordpress_database }}"
+  - name: "{{ grafana_database_name }}"
+
+mariadb_users:
+  - name: "{{ wordpress_user }}"
+    password: "{{ wordpress_password }}"
+    priv: '{{ wordpress_database }}.*:ALL'
+  - name: '{{ grafana_database_user }}'
+    password: '{{ grafana_database_password }}'
+    priv: '{{ grafana_database_name }}.*:ALL'
+    host: '192.168.56.%'
+  - name: '{{ grafana_database_user }}'
+    password: '{{ grafana_database_password }}'
+    priv: '{{ grafana_database_name }}.*:ALL'
+
+# Grafana
+
+grafana_security:
+  admin_user: vagrant
+  admin_password: vagrant
+
+grafana_database:
+  type: mysql
+  host: 127.0.0.1:3306
+  name: "{{ grafana_database_name }}"
+  user: "{{ grafana_database_user }}"
+  password: "{{ grafana_database_password }}"
+
+grafana_datasources:
+  - name: prometheus
+    type: prometheus
+    access: proxy
+    url: 'http://{{ prometheus_web_listen_address }}'
+    basicAuth: false
+
+grafana_dashboards:
+  - dashboard_id: '10645'
+    revision_id: '1'
+    datasource: 'prometheus'
+
+# Prometheus
+prometheus_scrap_configs:
+  - job_name: "prometheus"
+    metrics_path: "/metrics"
+    static_configs:
+      - targets:
+        - localhost:9100
