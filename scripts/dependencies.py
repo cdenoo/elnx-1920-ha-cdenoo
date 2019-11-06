@@ -1,5 +1,9 @@
+# Install via running command `pip install pyyaml --user`
 import yaml
+
+# Install via running command `pip install gitpython --user`
 import git
+
 import sys
 
 def main():
