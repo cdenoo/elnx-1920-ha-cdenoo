@@ -1,0 +1,55 @@
+version: '2'
+
+services:
+  mariadb:
+    image: mariadb
+    container_name: mariadb
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: example
+      MYSQL_DATABASE: db
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+  prometheus:
+    build: './prometheus'
+    container_name: prometheus
+    ports:
+      - 3001:9090
+  grafana:
+    build: './grafana'
+    container_name: grafana
+    ports:
+      - 3000:3000
+    user: "472"
+    environment:
+      - DS_PROMETHEUS_111=Prometheus
+    depends_on:
+      - prometheus
+  mysql-exporter:
+    image: prom/mysqld-exporter
+    container_name: mysql-exporter
+    ports:
+      - 9104:9104
+    volumes:
+      - ./mysql-exporter/.my.cnf:/root/.my.cnf
+    environment: 
+      - DATA_SOURCE_NAME='root:example@(mysql:3306)/db'
+      - collect.info_schema.tablestats=true
+      - collect.info_schema.userstats=true
+      - collect.info_schema.query_response_time=true
+      - collect.auto_increment.columns=true
+      - collect.binlog_size=true
+      - collect.perf_schema.eventsstatements=true
+      - collect.perf_schema.eventswaits=true
+      - collect.perf_schema.file_events=true
+      - collect.perf_schema.indexiowaits=true
+      - collect.perf_schema.tableiowaits=true
+      - collect.perf_schema.tablelocks=true
+    depends_on:
+      - mariadb
+  node-exporter:
+    image: prom/node-exporter
+    container_name: node-exporter
+    ports:
+      - 9100:9100

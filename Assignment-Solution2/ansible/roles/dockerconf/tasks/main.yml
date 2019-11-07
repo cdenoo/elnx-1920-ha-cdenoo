@@ -1,0 +1,11 @@
+---
+- name: Run docker-compose
+  become: yes
+  become_user: vagrant
+  command:
+    argv:
+      - docker-compose
+      - up
+      - -d
+  args:
+    chdir: /vagrant/files/

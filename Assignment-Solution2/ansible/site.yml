@@ -1,0 +1,9 @@
+# site.yml
+---
+- hosts: all
+  roles:
+    - bertvv.rh-base
+    - bertvv.httpd
+    - while_true_do.srv_docker
+    - while_true_do.srv_cockpit
+    - dockerconf
