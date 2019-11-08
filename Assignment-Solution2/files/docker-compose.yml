@@ -9,21 +9,21 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: example
       MYSQL_DATABASE: db
-      MYSQL_USER: user
-      MYSQL_PASSWORD: password
+      MYSQL_USER: dbuser
+      MYSQL_PASSWORD: example
   prometheus:
     build: './prometheus'
     container_name: prometheus
     ports:
       - 3001:9090
+    cap_add:
+      - SYS_TIME
   grafana:
     build: './grafana'
     container_name: grafana
     ports:
       - 3000:3000
     user: "472"
-    environment:
-      - DS_PROMETHEUS_111=Prometheus
     depends_on:
       - prometheus
   mysql-exporter:
@@ -34,7 +34,7 @@ services:
     volumes:
       - ./mysql-exporter/.my.cnf:/root/.my.cnf
     environment: 
-      - DATA_SOURCE_NAME='root:example@(mysql:3306)/db'
+      - DATA_SOURCE_NAME='dbuser:example@(192.168.56.10:3306)/db'
       - collect.info_schema.tablestats=true
       - collect.info_schema.userstats=true
       - collect.info_schema.query_response_time=true
@@ -53,3 +53,5 @@ services:
     container_name: node-exporter
     ports:
       - 9100:9100
+    cap_add:
+      - SYS_TIME
