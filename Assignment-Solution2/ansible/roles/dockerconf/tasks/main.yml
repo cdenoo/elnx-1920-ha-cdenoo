@@ -1,11 +1,20 @@
 ---
+- name: Copy docker files to the vm
+  copy:
+    src: ../files/
+    dest: /home/vagrant/docker
+    owner: vagrant
+    group: vagrant
+    mode: '0644'
+
+- name: Make sure the script is executable
+  file:
+    path: /home/vagrant/docker/run_docker_compose.sh
+    mode: u=rwx,g=rwx,o=r
+
 - name: Run docker-compose
   become: yes
   become_user: vagrant
-  command:
-    argv:
-      - docker-compose
-      - up
-      - -d
+  shell: bash run_docker_compose.sh
   args:
-    chdir: /vagrant/files/
+    chdir: /home/vagrant/docker/
