@@ -47,9 +47,29 @@ Expected: Dashboard with hardware data shown
 
 ## Documentation
 
-Describe *in detail* how you completed the assignment, with main focus on the "manual" work. It is of course not necessary to copy/paste your code in this document, but you can refer to it with a hyperlink.
-
-Make sure to write clean Markdown code, so your report looks good and is clearly structured on Github.
+* Tried my hand at docker and docker-compose
+* Looked at [Docker Docs](https://docs.docker.com/compose/gettingstarted/)
+* Ran mariadb on docker, tried to connect to it from my database client
+* Tried to find visualization software for collectd, but most were either dated or no longer maintained
+* Looked at OpenSCAP, Icinga and ElasticStack - but since those were proprietary, I chose Grafana and Prometheus as monitoring tools
+* Looked at the code from [cloudalchemy.grafana](https://github.com/cloudalchemy/ansible-grafana) and [cloudalchemy.prometheus](https://github.com/cloudalchemy/ansible-prometheus) to get an idea on where to start
+* Looked at the [Grafana Docs](https://grafana.com/docs/installation/configuration/)
+* Ran a basic Grafana image on docker
+* Looked at the [Prometheus Docs](https://prometheus.io/docs/prometheus/latest/installation/)
+* Ran a basic Prometheus image on docker
+  * Issue: Prometheus and Cockpit both run on port 9090
+  * Solution: Rebind Prometheus port to 3001
+* Connected Grafana and Prometheus manually
+* Tried to make Grafana and Prometheus connect automatically via configs
+* Ran a mysqld-exporter image on docker
+* Connected the mysqld-exporter image to Prometheus
+  * Issue: didn't know how
+  * Solution: [Prometheus Mariadb](https://computingforgeeks.com/monitoring-mysql-mariadb-with-prometheus-in-five-minutes/) and [Prometheus Mariadb Error](https://stackoverflow.com/questions/57347415/cant-monitor-mysql-using-prometheus-docker-and-prom-mysqld-exporter-image)
+* Ran a node-exporter to monitor hardware
+* Connected the node-exporter to Prometheus
+* Tried to run docker-compose as an ansible role
+  * Issue: docker service is not up yet when ansible provisioner reaches the role
+  * Solution: ...
 
 ## Test report
 
