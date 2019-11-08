@@ -1,0 +1,61 @@
+---
+- name: Install docker yum repo
+  yum_repository:
+    name: docker
+    description: docker repository
+    baseurl: https://download.docker.com/linux/centos/7/x86_64/stable/
+
+- name: Make sure docker is installed
+  package:
+    name: docker-ce
+    state: present
+
+- name: Make sure epel-release repo is installed
+  package:
+    name: epel-release
+    state: present
+
+- name: Make sure pip is installed
+  package:
+    name: python-pip
+    state: present
+
+- name: Make sure docker-compose is installed
+  pip:
+    name: docker-compose
+
+- name: Make sure docker is running and enabled
+  service:
+    name: docker
+    state: started
+    enabled: yes
+
+- name: Make sure user vagrant is added to docker users
+  user:
+    name: vagrant
+    append: yes
+    groups: docker
+
+# - name: Copy docker files to the vm
+#   copy:
+#     src: ../files/
+#     dest: /home/vagrant/docker
+#     owner: vagrant
+#     group: vagrant
+#     mode: '0644'
+
+# - name: Make sure the script is executable
+#   file:
+#     path: /home/vagrant/docker/run_docker_compose.sh
+#     mode: u=rwx,g=rwx,o=r
+
+# - name: Pause playbook to prevent docker daemon error
+#   pause:
+#     minutes: 1
+
+# - name: Run docker-compose
+#   become: yes
+#   become_user: vagrant
+#   shell: bash run_docker_compose.sh
+#   args:
+#     chdir: /home/vagrant/docker/

@@ -1,0 +1,6 @@
+# site.yml
+---
+- hosts: all
+  roles:
+    - bertvv.rh-base
+    - dockerconf

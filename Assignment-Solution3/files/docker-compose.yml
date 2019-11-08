@@ -1,0 +1,39 @@
+version: '3.1'
+
+services:
+  mariadb:
+    image: mariadb
+    container_name: mariadb
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: wordpressdb
+      MYSQL_USER: wordpressuser
+      MYSQL_PASSWORD: wordpresspass
+
+  wordpress:
+    image: wordpress
+    container_name: wordpress
+    ports:
+      - 80:80
+    environment:
+      WORDPRESS_DB_HOST: mariadb
+      WORDPRESS_DB_NAME: wordpressdb
+      WORDPRESS_DB_USER: wordpressuser
+      WORDPRESS_DB_PASSWORD: wordpresspass
+    volumes:
+      - ./wordpress:/var/www/html
+    deploy:
+      replicas: 2
+
+  visualizer:
+    image: dockersamples/visualizer
+    container_name: visualizer
+    deploy:
+      placement:
+        constraints: [node.role == manager]
+    ports:
+      - 8100:8080
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
