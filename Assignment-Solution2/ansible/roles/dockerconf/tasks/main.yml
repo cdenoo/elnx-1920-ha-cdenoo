@@ -12,6 +12,10 @@
     path: /home/vagrant/docker/run_docker_compose.sh
     mode: u=rwx,g=rwx,o=r
 
+- name: Pause playbook to prevent docker daemon error
+  pause:
+    minutes: 1
+
 - name: Run docker-compose
   become: yes
   become_user: vagrant
