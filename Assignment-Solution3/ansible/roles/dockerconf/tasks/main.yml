@@ -42,22 +42,6 @@
     append: yes
     groups: docker
 
-- name: Install cockpit
-  package:
-    name: cockpit
-
-- name: Enable cockpit
-  service:
-    name: cockpit
-    state: started
-    enabled: yes
-  
-- name: Firewall rule for cockpit
-  firewalld:
-    state: enabled
-    service: cockpit
-    permanent: yes
-
 # - name: Copy docker files to the vm
 #   copy:
 #     src: ../files/

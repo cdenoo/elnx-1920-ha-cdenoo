@@ -4,3 +4,4 @@
   roles:
     - bertvv.rh-base
     - dockerconf
+    - cockpit
