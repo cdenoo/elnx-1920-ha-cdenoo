@@ -18,6 +18,27 @@ How are you going to verify that the requirements are met? The test plan is a de
 - Test setup before continuing
 - Tried to up the server, but apparently installing docker-compose via pip does no longer work
   - Fix: replaced pip installation by curl download and install
+- Compare FOSS load testers
+  - Gatling (great visualizer)
+  - JMeter (java based application - easy to install and use)
+- Chose JMeter and installed on host system
+- Installed cockpit for local system monitoring
+- With 10 concurrent users
+  - CPU: low usage
+  - Memory: low usage
+  - Disk: low usage
+  - Network: low usage
+- With 100 concurrent users
+  - CPU: 
+  - Memory: 
+  - Disk: 
+  - Network: 
+- With 1000 concurrent users
+  - CPU: 
+  - Memory: 
+  - Disk: 
+  - Network: 
+
 
 ## Test report
 
