@@ -24,3 +24,4 @@ ansible/roles/*.*
 
 # Ansible Retry-files
 *.retry
+Assignment-Solution3/dockervolumes/*
