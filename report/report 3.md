@@ -15,9 +15,9 @@ How are you going to verify that the requirements are met? The test plan is a de
 
 ## Documentation
 
-Describe *in detail* how you completed the assignment, with main focus on the "manual" work. It is of course not necessary to copy/paste your code in this document, but you can refer to it with a hyperlink.
-
-Make sure to write clean Markdown code, so your report looks good and is clearly structured on Github.
+- Test setup before continuing
+- Tried to up the server, but apparently installing docker-compose via pip does no longer work
+  - Fix: replaced pip installation by curl download and install
 
 ## Test report
 
