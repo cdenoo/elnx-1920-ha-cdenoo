@@ -12,7 +12,7 @@ services:
       MYSQL_USER: wordpressuser
       MYSQL_PASSWORD: wordpresspass
     volumes:
-      - /vagrant/dockervolumes/mariadb:/var/lib/mysql
+      - db-data:/var/lib/mysql
 
   wordpress:
     image: wordpress
@@ -41,3 +41,6 @@ services:
   #   volumes:
   #     - /sys/fs/cgroup:/cgroup
   #     - /var/run/docker.sock:/var/run/docker.sock
+
+volumes:
+  db-data:
