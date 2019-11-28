@@ -25,22 +25,8 @@ services:
       WORDPRESS_DB_USER: wordpressuser
       WORDPRESS_DB_PASSWORD: wordpresspass
     volumes:
-      - /vagrant/dockervolumes/wordpress:/var/www/html
-
-  # prometheus:
-  #   build: './prometheus'
-  #   ports:
-  #     - 9100:9090
-  #   cap_add:
-  #     - SYS_TIME
-
-  # containerexporter:
-  #   image: prom/container-exporter
-  #   ports:
-  #     - 9104:9104
-  #   volumes:
-  #     - /sys/fs/cgroup:/cgroup
-  #     - /var/run/docker.sock:/var/run/docker.sock
+      - wp-data:/var/www/html
 
 volumes:
   db-data:
+  wp-data:
