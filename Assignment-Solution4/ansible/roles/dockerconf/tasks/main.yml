@@ -10,11 +10,6 @@
     name: docker-ce
     state: present
 
-- name: Make sure epel-release repo is installed
-  package:
-    name: epel-release
-    state: present
-
 - name: Install docker-compose
   uri:
     url: https://github.com/docker/compose/releases/download/1.24.1/docker-compose-{{ ansible_system }}-{{ ansible_architecture }}
@@ -42,18 +37,17 @@
 #     group: vagrant
 #     mode: '0644'
 
-# - name: Make sure the script is executable
-#   file:
-#     path: /home/vagrant/docker/run_docker_compose.sh
-#     mode: u=rwx,g=rwx,o=r
-
 # - name: Pause playbook to prevent docker daemon error
 #   pause:
 #     minutes: 1
 
+# - name: Wait for docker daemon
+#   wait_for:
+#     host: http+docker://localhost
+
 # - name: Run docker-compose
-#   become: yes
+#   become: true
 #   become_user: vagrant
-#   shell: bash run_docker_compose.sh
-#   args:
-#     chdir: /home/vagrant/docker/
+#   shell: |
+#     cd /home/vagrant/docker/
+#     docker-compose up -d
