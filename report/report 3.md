@@ -24,7 +24,7 @@ Guest:
 
 Host:
 - Open browser http://192.168.56.10:9090
-- Run load balancer with script provided in `./Assignment-Solution3/files/Webserver-Load-Test.jmx`
+- Run load tester with script provided in `./Assignment-Solution3/files/Webserver-Load-Test.jmx`
 
 ## Documentation
 
