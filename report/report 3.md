@@ -37,6 +37,8 @@ Host:
 - Chose JMeter and installed on host system
 - Installed cockpit for local system monitoring
 
+## Test report
+
 ### Virtualbox setup
 
 ![VBox 1](img/R3/VBox_1Core_6Gb.png)
@@ -73,10 +75,6 @@ Host:
 ![JMeter Setup](img/R3/JMeter_1000_Threads_Setup.png)
 ![JMeter Result](img/R3/JMeter_1000_Threads_Result.png)
 ![Cockpit Result](img/R3/Cockpit_1000_Threads.png)
-
-## Test report
-
-The test report is a transcript of the execution of the test plan, with the actual results. Significant problems you encountered should also be mentioned here, as well as any solutions you found. The test report should clearly prove that you have met the requirements.
 
 ## Resources
 
