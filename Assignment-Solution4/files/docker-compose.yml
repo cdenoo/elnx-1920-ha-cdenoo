@@ -1,0 +1,46 @@
+version: '3.1'
+
+services:
+  mariadb:
+    image: mariadb
+    container_name: mariadb
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: wordpressdb
+      MYSQL_USER: wordpressuser
+      MYSQL_PASSWORD: wordpresspass
+    volumes:
+      - db-data:/var/lib/mysql
+
+  wordpress:
+    image: wordpress
+    container_name: wordpress
+    ports:
+      - 80:80
+    environment:
+      WORDPRESS_DB_HOST: 192.168.56.10
+      WORDPRESS_DB_NAME: wordpressdb
+      WORDPRESS_DB_USER: wordpressuser
+      WORDPRESS_DB_PASSWORD: wordpresspass
+    volumes:
+      - /vagrant/dockervolumes/wordpress:/var/www/html
+
+  # prometheus:
+  #   build: './prometheus'
+  #   ports:
+  #     - 9100:9090
+  #   cap_add:
+  #     - SYS_TIME
+
+  # containerexporter:
+  #   image: prom/container-exporter
+  #   ports:
+  #     - 9104:9104
+  #   volumes:
+  #     - /sys/fs/cgroup:/cgroup
+  #     - /var/run/docker.sock:/var/run/docker.sock
+
+volumes:
+  db-data:

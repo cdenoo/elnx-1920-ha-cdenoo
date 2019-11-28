@@ -1,0 +1,18 @@
+---
+- name: Make sure cockpit is installed
+  package:
+    name: cockpit
+    state: present
+  notify:
+    - Start Cockpit
+
+- name: Make sure cockpit-docker is installed
+  package:
+    name: cockpit-docker
+    state: present
+
+- name: Make sure the cockpit service is allowed through the firewall
+  firewalld:
+    service: cockpit
+    state: enabled
+    permanent: yes
