@@ -3,8 +3,6 @@ version: '3.1'
 services:
   mariadb:
     image: mariadb
-    ports:
-      - 3306:3306
     environment:
       MYSQL_ROOT_PASSWORD: rootpassword
       MYSQL_DATABASE: wordpressdb
@@ -18,12 +16,16 @@ services:
     ports:
       - 80:80
     environment:
-      WORDPRESS_DB_HOST: 192.168.56.10
+      WORDPRESS_DB_HOST: mariadb
       WORDPRESS_DB_NAME: wordpressdb
       WORDPRESS_DB_USER: wordpressuser
       WORDPRESS_DB_PASSWORD: wordpresspass
     volumes:
       - wp-data:/var/www/html
+
+  # nginx:
+  #   image: nginx
+
 
 volumes:
   db-data:
