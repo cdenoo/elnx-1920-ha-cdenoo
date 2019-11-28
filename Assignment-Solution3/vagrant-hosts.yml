@@ -6,6 +6,8 @@
 ---
 - name: srv001
   ip: 192.168.56.10
+  memory: 6144
+  cpus: 6
   
 # Example of a more elaborate host definition
 # - name: srv002
