@@ -6,9 +6,5 @@ rhbase_firewall_allow_services:
   - https
   - mysql
 
-rhbase_firewall_allow_ports:
-  - 9100/tcp # Prometheus
-  - 9104/tcp # Container-exporter
-
 rhbase_selinux_booleans:
   - httpd_can_network_connect_db
