@@ -3,7 +3,6 @@ version: '3.1'
 services:
   mariadb:
     image: mariadb
-    container_name: mariadb
     ports:
       - 3306:3306
     environment:
@@ -16,7 +15,6 @@ services:
 
   wordpress:
     image: wordpress
-    container_name: wordpress
     ports:
       - 80:80
     environment:
