@@ -36,22 +36,43 @@ Host:
   - JMeter (java based application - easy to install and use)
 - Chose JMeter and installed on host system
 - Installed cockpit for local system monitoring
-- With 10 concurrent users
-  - CPU: low usage
-  - Memory: low usage
-  - Disk: low usage
-  - Network: low usage
-- With 100 concurrent users
-  - CPU: 
-  - Memory: 
-  - Disk: 
-  - Network: 
-- With 1000 concurrent users
-  - CPU: 
-  - Memory: 
-  - Disk: 
-  - Network: 
 
+### Virtualbox setup
+
+![VBox 1](img/R3/VBox_1Core_6Gb.png)
+
+### With 10 concurrent users
+
+- CPU: ~20%
+- Memory: ~950 Mb
+- Disk: low usage
+- Network: ~16 mbps up/down
+
+![JMeter Setup](img/R3/JMeter_10_Threads_Setup.png)
+![JMeter Result](img/R3/JMeter_10_Threads_Result.png)
+![Cockpit Result](img/R3/Cockpit_10_Threads.png)
+
+### With 100 concurrent users
+
+- CPU: ~50%
+- Memory: ~1.4 Gb
+- Disk: low
+- Network: ~48 mbps up/down
+
+![JMeter Setup](img/R3/JMeter_100_Threads_Setup.png)
+![JMeter Result](img/R3/JMeter_100_Threads_Result.png)
+![Cockpit Result](img/R3/Cockpit_100_Threads.png)
+
+### With 1000 concurrent users
+
+- CPU: ~60%
+- Memory: ~1.4 Gb
+- Disk: low
+- Network: ~40 mbps up/down
+
+![JMeter Setup](img/R3/JMeter_1000_Threads_Setup.png)
+![JMeter Result](img/R3/JMeter_1000_Threads_Result.png)
+![Cockpit Result](img/R3/Cockpit_1000_Threads.png)
 
 ## Test report
 
@@ -62,3 +83,4 @@ The test report is a transcript of the execution of the test plan, with the actu
 List all sources of useful information that you encountered while completing this assignment: books, manuals, HOWTO's, blog posts, etc.
 
 - [Docker Swarm](https://docs.docker.com/get-started/part4/)
+- List all ansible system variables `ansible srv001 -m setup -i .vagrant/provisioners/ansible/inventory/vagrant_ansible_inventory`
