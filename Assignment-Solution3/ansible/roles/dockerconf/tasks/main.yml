@@ -15,19 +15,11 @@
     name: epel-release
     state: present
 
-- name: Make sure docker-compose is installed
-  stat:
-    path: /usr/local/bin/docker-compose
-  register: docker_compose_tarball
-
-- name: Install docker-compose if necessary
-  shell: |
-    curl -L "https://github.com/docker/compose/releases/download/1.24.1/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-  when: docker_compose_tarball.stat.exists == false
-
-- name: Make sure docker-compose has the correct permissions
-  file:
-    path: /usr/local/bin/docker-compose
+- name: Install docker-compose
+  uri:
+    url: https://github.com/docker/compose/releases/download/1.24.1/docker-compose-{{ ansible_system }}-{{ ansible_architecture }}
+    creates: /usr/local/bin/docker-compose
+    dest: /usr/local/bin/docker-compose
     mode: u=rwx,g=rx,o=rx
 
 - name: Make sure docker is running and enabled
