@@ -1,7 +1,7 @@
 version: '2.4'
 
 services:
-  mariadb:
+  db:
     image: mariadb
     environment:
       MYSQL_ROOT_PASSWORD: rootpassword
@@ -9,21 +9,23 @@ services:
       MYSQL_USER: wordpressuser
       MYSQL_PASSWORD: wordpresspass
     volumes:
-      - db-data:/var/lib/mysql
+      - dbdata:/var/lib/mysql
 
   wordpress:
     image: wordpress
+    # ports:
+    #   - '80:80'
     expose:
       - '80'
     environment:
-      WORDPRESS_DB_HOST: mariadb
+      WORDPRESS_DB_HOST: db
       WORDPRESS_DB_NAME: wordpressdb
       WORDPRESS_DB_USER: wordpressuser
       WORDPRESS_DB_PASSWORD: wordpresspass
     volumes:
-      - wp-data:/var/www/html
+      - wpdata:/var/www/html
     depends_on:
-      - mariadb
+      - db
     scale: 3
 
   nginx:
@@ -34,5 +36,5 @@ services:
       - 80:80
 
 volumes:
-  db-data:
-  wp-data:
+  dbdata:
+  wpdata:
