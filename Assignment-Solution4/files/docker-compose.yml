@@ -1,4 +1,4 @@
-version: '3.1'
+version: '2.4'
 
 services:
   mariadb:
@@ -13,8 +13,8 @@ services:
 
   wordpress:
     image: wordpress
-    ports:
-      - 80:80
+    expose:
+      - '80'
     environment:
       WORDPRESS_DB_HOST: mariadb
       WORDPRESS_DB_NAME: wordpressdb
@@ -22,10 +22,16 @@ services:
       WORDPRESS_DB_PASSWORD: wordpresspass
     volumes:
       - wp-data:/var/www/html
+    depends_on:
+      - mariadb
+    scale: 3
 
-  # nginx:
-  #   image: nginx
-
+  nginx:
+    build: ./nginx
+    depends_on:
+      - wordpress
+    ports:
+      - 80:80
 
 volumes:
   db-data:
