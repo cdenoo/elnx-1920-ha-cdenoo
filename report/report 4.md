@@ -19,6 +19,11 @@ How are you going to verify that the requirements are met? The test plan is a de
 ## Documentation
 
 - Add a NGINX container
+- Make wordpress containers scale
+- Add nginx config file
+- Tried to completely reset the vm, ran into an error with nginx
+  - if the wordpress site hasn't been "installed" yet, the scaling of the container flips out
+  - solution: run the wordpress container without nginx/scaling, install the site, then scale
 
 ## Test report
 
@@ -26,4 +31,5 @@ The test report is a transcript of the execution of the test plan, with the actu
 
 ## Resources
 
-List all sources of useful information that you encountered while completing this assignment: books, manuals, HOWTO's, blog posts, etc.
+- [Wordpress NGINX docker github](https://github.com/mjstealey/wordpress-nginx-docker)
+- [Multiple service instances](https://pspdfkit.com/blog/2018/how-to-use-docker-compose-to-run-multiple-instances-of-a-service-in-development/)
