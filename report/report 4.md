@@ -32,6 +32,9 @@ Host:
 - Check if NGINX is running
 - Check if 3 instances of Wordpress are running
 
+- Run load test on the NGINX container
+- Check if load is balanced over wordpress servers
+
 ## Documentation
 
 - Add a NGINX container
@@ -48,7 +51,35 @@ Host:
 
 ## Test report
 
-The test report is a transcript of the execution of the test plan, with the actual results. Significant problems you encountered should also be mentioned here, as well as any solutions you found. The test report should clearly prove that you have met the requirements.
+### Setup
+
+- Run command `cd ./Assignment-Solution4/ && vagrant up`
+  - Result: success
+- Open browser on http://192.168.56.10
+  - Result: success
+- Configure wordpress with dummy data
+- Run `./scripts/production.sh`
+  - Result: success
+- Open browser on http://192.168.56.10
+  - Result: success, shows wordpress site with dummy data
+
+### Production
+- Open browser on http://192.168.56.10:9090
+  - Result: success, shows cockpit webpage
+- Login with credentials
+  - User: `vagrant`
+  - Password: `vagrant`
+  - Result: success, can log in
+- Navigate to https://192.168.56.10:9090/docker
+  - Result: success, shows docker containers
+- Check if NGINX is running
+  - Result: success, a single NGINX container is running
+- Check if 3 instances of Wordpress are running
+  - Result: success, 3 wordpress containers are running
+
+- Run load test on the NGINX container
+- Check if load is balanced over wordpress servers
+  - Result: success, load is equally balanced between the 3 wordpress containers
 
 ## Resources
 
