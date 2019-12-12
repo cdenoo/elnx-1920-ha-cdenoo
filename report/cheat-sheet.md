@@ -30,12 +30,24 @@ Use this file to write down the most important commands you encounter, so you ca
 | commits van local naar remote pushen | git push                    |
 | changes van remote naar local halen  | git pull                    |
 | repository naar local kopieren       | git clone `<repo-link>`     |
+| toon vorige commits                  | git show                    |
 
 ## Docker-compose
-| Taak                                                      | Commando                                                   |
-| :-------------------------------------------------------- | :--------------------------------------------------------- |
-| docker-compose up -d                                      | Up the Docker daemon                                       |
-| docker-compose down                                       | Take down the Docker daemon                                |
-| docker-compose down -v                                    | Delete all docker volumes specified in docker-compose file |
-| docker-compose -f /vagrant/files/docker-compose.yml up -d | Up docker-compose file in different directory              |
-| docker-compose -f /vagrant/files/docker-compose.yml down  | Take down docker-compose file in different directory       |
+| Taak                                                       | Commando                                                  |
+| :--------------------------------------------------------- | :-------------------------------------------------------- |
+| Up the Docker daemon                                       | docker-compose up -d                                      |
+| Take down the Docker daemon                                | docker-compose down                                       |
+| Delete all docker volumes specified in docker-compose file | docker-compose down -v                                    |
+| Up docker-compose file in different directory              | docker-compose -f /vagrant/files/docker-compose.yml up -d |
+| Take down docker-compose file in different directory       | docker-compose -f /vagrant/files/docker-compose.yml down  |
+
+## Java
+| Taak                       | Commando                 |
+| :------------------------- | :----------------------- |
+| Run jar file               | java -jar \[file\].jar   |
+| Run jar file in background | java -jar \[file\].jar & |
+
+## Cockpit
+| Taak                  | Commando                     |
+| :-------------------- | :--------------------------- |
+| Start cockpit service | systemctl start cockpit.sock |
