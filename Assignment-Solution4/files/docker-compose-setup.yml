@@ -13,8 +13,8 @@ services:
 
   wordpress:
     image: wordpress
-    expose:
-      - '80'
+    ports:
+      - '80:80'
     environment:
       WORDPRESS_DB_HOST: db
       WORDPRESS_DB_NAME: wordpressdb
@@ -24,14 +24,6 @@ services:
       - wpdata:/var/www/html
     depends_on:
       - db
-    scale: 3
-
-  nginx:
-    build: ./nginx
-    depends_on:
-      - wordpress
-    ports:
-      - 80:80
 
 volumes:
   dbdata:

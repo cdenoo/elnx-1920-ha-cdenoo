@@ -29,25 +29,13 @@
     append: yes
     groups: docker
 
-# - name: Copy docker files to the vm
-#   copy:
-#     src: ../files/
-#     dest: /home/vagrant/docker
-#     owner: vagrant
-#     group: vagrant
-#     mode: '0644'
+- name: Pause playbook to prevent docker daemon error
+  pause:
+    minutes: 1
 
-# - name: Pause playbook to prevent docker daemon error
-#   pause:
-#     minutes: 1
-
-# - name: Wait for docker daemon
-#   wait_for:
-#     host: http+docker://localhost
-
-# - name: Run docker-compose
-#   become: true
-#   become_user: vagrant
-#   shell: |
-#     cd /home/vagrant/docker/
-#     docker-compose up -d
+- name: Run docker-compose
+  become: true
+  become_user: vagrant
+  shell: |
+    docker-compose -f /vagrant/files/docker-compose-setup.yml up -d
+    exit 0
