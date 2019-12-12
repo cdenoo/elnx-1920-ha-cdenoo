@@ -3,11 +3,7 @@
 - Student name: Cedric Denoo
 - Github repo: <https://github.com/HoGentTIN/elnx-1920-ha-cdenoo.git>
 
-Describe the goals of the current iteration in a short sentence.
-
-## Requirements
-
-- list requirements for this iteration. Use [S.M.A.R.T.](https://en.wikipedia.org/wiki/SMART_criteria) criteria!
+Run load tests on the containers.
 
 ## Test plan
 
