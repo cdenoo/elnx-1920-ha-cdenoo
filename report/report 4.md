@@ -14,7 +14,23 @@ Goal of this report is to load balance the services with NGINX.
 
 ## Test plan
 
-How are you going to verify that the requirements are met? The test plan is a detailed checklist of actions to take, including the expected result for each action, in order to prove your system meets the requirements. Part of this is running the automated tests, but it is not always possible to validate *all* requirements throught these tests.
+### Setup
+Host:
+- Open directory `cd ./Assignment-Solution4/`
+- Run `vagrant up`
+- Open browser on http://192.168.56.10
+- Configure wordpress
+- Run `./scripts/production.sh`
+- Open browser on http://192.168.56.10
+
+### Production
+- Open browser on http://192.168.56.10:9090
+- Login with credentials
+  - User: `vagrant`
+  - Password: `vagrant`
+- Navigate to https://192.168.56.10:9090/docker
+- Check if NGINX is running
+- Check if 3 instances of Wordpress are running
 
 ## Documentation
 
@@ -24,6 +40,11 @@ How are you going to verify that the requirements are met? The test plan is a de
 - Tried to completely reset the vm, ran into an error with nginx
   - if the wordpress site hasn't been "installed" yet, the scaling of the container flips out
   - solution: run the wordpress container without nginx/scaling, install the site, then scale
+- Automate docker-compose with ansible
+  - tried to use docker_compose module
+    - compatibilty issues between docker, docker-compose, python and docker_compose ansible module
+  - automate docker-compose in a custom ansible role, install via web interface, then run `./scripts/production.sh`
+- Write documentation
 
 ## Test report
 
@@ -33,3 +54,4 @@ The test report is a transcript of the execution of the test plan, with the actu
 
 - [Wordpress NGINX docker github](https://github.com/mjstealey/wordpress-nginx-docker)
 - [Multiple service instances](https://pspdfkit.com/blog/2018/how-to-use-docker-compose-to-run-multiple-instances-of-a-service-in-development/)
+- [Ansible docker_compose](https://docs.ansible.com/ansible/latest/modules/docker_compose_module.html?highlight=docker)
